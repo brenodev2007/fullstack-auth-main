@@ -6,6 +6,7 @@ const fakeUser = {
   id: 1,
   username: "rodrigo",
   password: "123456",
+  role: "customer",
 };
 
 class SessionsController {
@@ -16,7 +17,7 @@ class SessionsController {
     }
 
     const { secret } = authConfig.jwt;
-    const token = sign({}, secret, {
+    const token = sign({ role: fakeUser.role }, secret, {
       subject: fakeUser.username,
     });
 
